@@ -100,6 +100,22 @@ class CategoryController extends Controller
         ]) -> setStatusCode(200);
     }
 
+    public function updateUser(UpdateCategoryRequest $request): JsonResponse
+    {
+        $id = $request -> id;
+        $data = Category::find($id);
+        $data -> fill($request->all());
+        $status = $data -> save();
+        if(!$status){
+            return response()->json(
+                ["message"=>"Data Gagal Di Ubah"]
+            )->setStatusCode(400);
+        }
+        return response() -> json([
+            "message"=>"Data Berhasil Di Ubah"
+        ]) -> setStatusCode(200);
+    }
+
     public function delete(DeleteCategoryRequest $request)
     {
         $id = $request -> id;
