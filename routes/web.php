@@ -44,6 +44,7 @@ Route::middleware(['auth'])-> group(function(){
         Route::post('/barang/jenis/save',[CategoryController::class,'save'])->name('barang.jenis.save');
         Route::post('/barang/jenis/detail',[CategoryController::class,'detail'])->name('barang.jenis.detail');
         Route::put('/barang/jenis/update',[CategoryController::class,'update'])->name('barang.jenis.update');
+        Route::put('/barang/jenis/update-user', [CategoryController::class, 'updateUser'])->name('barang.jenis.updateUser');
         Route::delete('/barang/jenis/delete',[CategoryController::class,'delete'])->name('barang.jenis.delete');
     });
         // satuan barang
