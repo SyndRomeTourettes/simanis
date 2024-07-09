@@ -145,6 +145,14 @@
                                     <th class="border-bottom-0">Serial Number</th>
                                     <th class="border-bottom-0">Merk/Type</th>
                                     <th class="border-bottom-0">Tanggal Registrasi</th>
+                                    <th class="border-bottom-0">Processor</th>
+                                    <th class="border-bottom-0">Ram</th>
+                                    <th class="border-bottom-0">Hardisk</th>
+                                    <th class="border-bottom-0">OS</th>
+                                    <th class="border-bottom-0">VGA</th>
+                                    <th class="border-bottom-0">User</th>
+                                    <th class="border-bottom-0">Divisi</th>
+                                    <th class="border-bottom-0">Lokasi</th>
                                     <th class="border-bottom-0">Nama</th>
                                     <th class="border-bottom-0">Keterangan</th>
                                     @if(Auth::user()->role->name != 'staff')
@@ -198,6 +206,38 @@
                     name:'tanggal_registrasi'
                 },
                 {
+                    data:'processor',
+                    name:'processor'
+                },
+                {
+                    data:'ram',
+                    name:'ram'
+                },
+                {
+                    data:'hardisk',
+                    name:'hardisk'
+                },
+                {
+                    data:'vga',
+                    name:'vga'
+                },
+                {
+                    data:'os',
+                    name:'os'
+                },
+                {
+                    data:'user',
+                    name:'user'
+                },
+                {
+                    data:'divisi',
+                    name:'divisi'
+                },
+                {
+                    data:'lokasi',
+                    name:'lokasi'
+                },
+                {
                     data:'name',
                     name:'name'
                 },
@@ -213,8 +253,15 @@
                 },
                 @if(Auth::user()->role->name != 'staff')
                 {
-                    data:'tindakan',
-                    name:'tindakan'
+                    data: null,
+                    name: 'tindakan',
+                    render: function(data, type, row) {
+                        return `
+                            <button class="btn btn-warning ubah" id="${row.id}" style="background-color: #28A745; border-color: #28A745; color:white; ">Ubah</button>
+                            <button class="btn btn-danger hapus" id="${row.id}">Hapus</button>
+                            <button class="btn btn-info ubah-pengguna" id="${row.id}" style="background-color: #0275D8; border-color: #0275D8; color:white ">Ubah Pengguna</button>
+                        `;
+                    }
                 }
                 @endif
             ]
